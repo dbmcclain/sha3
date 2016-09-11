@@ -187,7 +187,7 @@ Keccak padding rules and return the padded message."
   (let ((message-byte-length (length message))
         (width-bytes (truncate bit-width 8)))
     (setq message (adjust-array message (list width-bytes)))
-    (setf (aref message message-byte-length) #x01)
+    (setf (aref message message-byte-length) #x06)
     (loop for index from (1+ message-byte-length) below width-bytes
           do (setf (aref message index) #x00)
           finally
