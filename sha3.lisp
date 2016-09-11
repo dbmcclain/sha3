@@ -110,10 +110,10 @@ and `end', which must be numeric bounding-indices."
              #.*optimize-declaration*)
     ;; Handle potential remaining bytes
     (unless (zerop buffer-index)
-      (let ((remainder (- (length buffer) buffer-index))
+      (let ((remainder (- rate-bytes buffer-index))
             (length (- end start)))
         (declare (type fixnum remainder length))
-        (replace buffer vector :start1 buffer-index :start2 start :end2 end)
+        (replace buffer vector :start1 buffer-index :end1 rate-bytes :start2 start :end2 end)
         ;; Return if still unfilled buffer
         (when (< length remainder)
           (incf (sha3-state-buffer-index state) length)
